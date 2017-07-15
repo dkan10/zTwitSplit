@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  zTwitSplit
+
+  Created by dkan10 on 7/15/17.
+  Copyright © 2017 dkan10. All rights reserved.
+*/
+
+"tfUserName" = "ENTER YOUR NAME";
+"btnStartChat" = "START CHAT";
