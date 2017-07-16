@@ -30,11 +30,18 @@ class LoginVc: UIViewController, UITextFieldDelegate {
         
         // multi language for title
         tfUserName.placeholder = MultiLanguage.tfUserName
+        btnStartChat.backgroundColor = Color.mainColor
         btnStartChat.setTitle(MultiLanguage.btnStartChat, for: .normal)
         
         // addObserver for keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tfUserName.text = ""
+        tfUserName.placeholder = MultiLanguage.tfUserName
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,15 +52,17 @@ class LoginVc: UIViewController, UITextFieldDelegate {
     @IBAction func btnStartChat(_ sender: Any) {
         let userName = tfUserName.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         self.view.endEditing(true)
-        
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let chatVc = sb.instantiateViewController(withIdentifier: "ChatVc") as? ChatVc
-        chatVc?.userName = userName
-        self.present(chatVc!, animated: true) {
-            print("present ChatVc successful!")
+        if (userName?.isEmpty)! {
+            // shake textfield
+            FuncUtils.shared.shakeTextField(tf: tfUserName)
+        } else {
+            // push new view
+            let chatVc = self.storyboard!.instantiateViewController(withIdentifier: "ChatVc") as! ChatVc
+            chatVc.userName = userName
+            // creating a navigation controller with VC1 at the root of the navigation stack.
+            let navController = UINavigationController(rootViewController: chatVc)
+            self.present(navController, animated:true, completion: nil)
         }
-
-        
     }
     
     // tap anywhere and close soft keyboard.

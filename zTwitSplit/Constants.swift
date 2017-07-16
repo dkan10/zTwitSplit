@@ -14,15 +14,19 @@ struct Config {
 }
 
 struct Color {
-    static let primaryColor = UIColor(red: 0.22, green: 0.58, blue: 0.29, alpha: 1.0)
-    static let secondaryColor = UIColor.lightGray
+    
+    static let mainColor = UIColor(red:0.23, green:0.23, blue:0.23, alpha:1.0)
     static let black = UIColor.black
     static let white = UIColor.white
+    static let lightGray = UIColor.lightGray
 }
 
 struct MultiLanguage {
     static let tfUserName = NSLocalizedString("tfUserName", comment: "")
     static let btnStartChat = NSLocalizedString("btnStartChat", comment: "")
+    static let sendMessagePlaceHolder = NSLocalizedString("sendMessagePlaceHolder", comment: "")
+    static let sendMessageEmptyContent = NSLocalizedString("sendMessageEmptyContent", comment: "")
+    static let dismiss = NSLocalizedString("dismiss", comment: "")
 }
 
 struct DeviceConstants {

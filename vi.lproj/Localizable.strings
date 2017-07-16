@@ -6,5 +6,8 @@
   Copyright © 2017 dkan10. All rights reserved.
 */
 
-"tfUserName" = "NHẬP HỌ TÊN";
-"btnStartChat" = "BẮT ĐẦU CHAT";
+tfUserName = "NHẬP HỌ TÊN";
+btnStartChat = "BẮT ĐẦU CHAT";
+sendMessagePlaceHolder = "Nhập tin nhắn..";
+sendMessageEmptyContent = "Vui lòng nhập tin nhắn trước khi gửi!";
+dismiss = "Bỏ qua";

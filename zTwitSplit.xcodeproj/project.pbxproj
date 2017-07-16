@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410FBE161F1B3E91003C9EED /* FuncUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FBE151F1B3E91003C9EED /* FuncUtils.swift */; };
+		410FBE1A1F1B474D003C9EED /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FBE191F1B474D003C9EED /* ChatCell.swift */; };
 		4140DE551F19D21500692B86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140DE541F19D21500692B86 /* AppDelegate.swift */; };
 		4140DE5A1F19D21500692B86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4140DE581F19D21500692B86 /* Main.storyboard */; };
 		4140DE5C1F19D21500692B86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4140DE5B1F19D21500692B86 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		410FBE151F1B3E91003C9EED /* FuncUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncUtils.swift; sourceTree = "<group>"; };
+		410FBE191F1B474D003C9EED /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		4140DE511F19D21500692B86 /* zTwitSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zTwitSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4140DE541F19D21500692B86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4140DE591F19D21500692B86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			children = (
 				4140DE871F19D30600692B86 /* Constants.swift */,
 				4140DE971F19EDB900692B86 /* DeviceIdentifier.swift */,
+				410FBE151F1B3E91003C9EED /* FuncUtils.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			children = (
 				4140DE931F19E32900692B86 /* LoginVc.swift */,
 				4140DE951F19E35000692B86 /* ChatVc.swift */,
+				410FBE191F1B474D003C9EED /* ChatCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -323,8 +329,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4140DE981F19EDB900692B86 /* DeviceIdentifier.swift in Sources */,
+				410FBE1A1F1B474D003C9EED /* ChatCell.swift in Sources */,
 				4140DE921F19D5C700692B86 /* Message.swift in Sources */,
 				4140DE551F19D21500692B86 /* AppDelegate.swift in Sources */,
+				410FBE161F1B3E91003C9EED /* FuncUtils.swift in Sources */,
 				4140DE941F19E32900692B86 /* LoginVc.swift in Sources */,
 				4140DE881F19D30600692B86 /* Constants.swift in Sources */,
 				4140DE961F19E35000692B86 /* ChatVc.swift in Sources */,
