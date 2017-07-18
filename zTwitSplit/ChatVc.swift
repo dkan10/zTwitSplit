@@ -23,7 +23,7 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tvCurrentMessage.text = MultiLanguage.sendMessagePlaceHolder
         tvCurrentMessage.textColor = Color.lightGray
         tvCurrentMessage.delegate = self
@@ -53,6 +53,8 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     // MARK: IBAction
     @IBAction func sendBtnTapped(_ sender: AnyObject) {
         btnSend.isEnabled = false
+        self.view.endEditing(true)
+        
         let message = tvCurrentMessage.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if message == MultiLanguage.sendMessagePlaceHolder  || message == "" {
             let actionSheetController = UIAlertController(title: "", message: MultiLanguage.sendMessageEmptyContent, preferredStyle: .alert)
@@ -61,8 +63,10 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
             self.present(actionSheetController, animated: true, completion: nil)
         } else {
             // send message here.
+            let post = Message(sender: userName!, time: FuncUtils.shared.getCurrentDate(), content: message)
+            messages.append(post)
+            self.tbvMessage.reloadData()
         }
-        self.view.endEditing(true)
         tvCurrentMessage.text = MultiLanguage.sendMessagePlaceHolder
         tvCurrentMessage.textColor = Color.lightGray
         tvCurrentMessage.setNeedsLayout()
@@ -125,7 +129,6 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue cell
         let cell = tbvMessage.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
-        // Unpack message from Firebase DataSnapshot
         let post = self.messages[indexPath.row]
         
         cell.lbSender.text = post.sender

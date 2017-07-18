@@ -24,4 +24,13 @@ class FuncUtils {
         tf.layer.add(animation, forKey: "position")
     }
     
+    func getCurrentDate() -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        let result = formatter.string(from: date)
+        return result
+    }
+
+    
 }
