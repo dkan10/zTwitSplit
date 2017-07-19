@@ -8,28 +8,25 @@
 
 import UIKit
 
-struct Config {
-    static let baseURL = NSURL(string: "http://www.example.org/")!
-    static let splineReticulatorName = "foobar"
-}
-
+// custom color will store here.
 struct Color {
-    
     static let mainColor = UIColor(red:0.23, green:0.23, blue:0.23, alpha:1.0)
     static let black = UIColor.black
     static let white = UIColor.white
     static let lightGray = UIColor.lightGray
 }
 
+// check Localizable.strings file.
 struct MultiLanguage {
     static let tfUserName = NSLocalizedString("tfUserName", comment: "")
     static let btnStartChat = NSLocalizedString("btnStartChat", comment: "")
+    static let pleaseEnterYourName = NSLocalizedString("pleaseEnterYourName", comment: "")
     static let sendMessagePlaceHolder = NSLocalizedString("sendMessagePlaceHolder", comment: "")
     static let sendMessageEmptyContent = NSLocalizedString("sendMessageEmptyContent", comment: "")
     static let sendMessageMustContainSpace = NSLocalizedString("sendMessageMustContainSpace", comment: "")
     static let dismiss = NSLocalizedString("dismiss", comment: "")
 }
-
+// help to detect current device.
 struct DeviceConstants {
     
     // iPod

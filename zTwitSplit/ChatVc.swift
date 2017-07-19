@@ -51,7 +51,7 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
 
     
     // MARK: IBAction
-    @IBAction func sendBtnTapped(_ sender: AnyObject) {
+    @IBAction func btnSend(_ sender: AnyObject) {
         btnSend.isEnabled = false
         self.view.endEditing(true)
         let message = tvCurrentMessage.text.trimmingCharacters(in: .whitespaces)
@@ -68,6 +68,7 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
                 messages.append(post)
                 self.tbvMessage.reloadData()
             } else {
+                // split message before update in UI.
                 let messageArr = FuncUtils.shared.splitMessage(message: message)
                 let time = FuncUtils.shared.getCurrentDate()
                 for i in 0..<messageArr.count {
@@ -117,7 +118,6 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
         hViewNewMessageContainer.constant = numberOfLine > 5 ? 16 + (textView.font?.lineHeight)!*5 :  16 + textView.contentSize.height
         tvCurrentMessage.setNeedsLayout()
         tvCurrentMessage.layoutIfNeeded()
-        print("viewNewMessageContainer: \(hViewNewMessageContainer.constant)")
         
     }
     

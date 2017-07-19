@@ -11,6 +11,7 @@ import UIKit
 
 public extension UIDevice {
     
+// this extension help to detect model name of current iOS device.
     var modelName: String {
         var systemInfo = utsname()
         uname(&systemInfo)

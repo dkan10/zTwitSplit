@@ -8,6 +8,7 @@
 
 tfUserName = "NHẬP HỌ TÊN";
 btnStartChat = "BẮT ĐẦU CHAT";
+pleaseEnterYourName = "Vui lòng nhập tên!";
 sendMessagePlaceHolder = "Nhập tin nhắn..";
 sendMessageEmptyContent = "Vui lòng nhập tin nhắn trước khi gửi!";
 sendMessageMustContainSpace = "Tin nhắn phải có khoảng trắng!";

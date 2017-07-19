@@ -53,13 +53,14 @@ class LoginVc: UIViewController, UITextFieldDelegate {
         let userName = tfUserName.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         self.view.endEditing(true)
         if (userName?.isEmpty)! {
-            // shake textfield
-            FuncUtils.shared.shakeTextField(tf: tfUserName)
+            // show alert
+            FuncUtils.shared.showAlert(vc: self, message: MultiLanguage.pleaseEnterYourName)
+            tfUserName.updateFocusIfNeeded()
         } else {
             // push new view
             let chatVc = self.storyboard!.instantiateViewController(withIdentifier: "ChatVc") as! ChatVc
             chatVc.userName = userName
-            // creating a navigation controller with VC1 at the root of the navigation stack.
+            // creating a navigation controller with chatVc at the root of the navigation stack.
             let navController = UINavigationController(rootViewController: chatVc)
             self.present(navController, animated:true, completion: nil)
         }
@@ -85,7 +86,6 @@ class LoginVc: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        
         self.view.endEditing(true)
         return true
     }

@@ -111,7 +111,7 @@
                                         </constraints>
                                         <state key="normal" image="send"/>
                                         <connections>
-                                            <action selector="sendBtnTapped:" destination="Ad4-5z-3zB" eventType="touchUpInside" id="ZES-IM-fvd"/>
+                                            <action selector="btnSend:" destination="Ad4-5z-3zB" eventType="touchUpInside" id="Vke-gD-ywf"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Send message to organizer.." translatesAutoresizingMaskIntoConstraints="NO" id="6MX-xO-35b">

@@ -15,6 +15,7 @@ class FuncUtils {
     static let shared: FuncUtils = FuncUtils()
     let charSpace = " "
     
+    // this func is use for something wrong from user input like wrong password, wrong email,...
     func shakeTextField(tf: UITextField) {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.07

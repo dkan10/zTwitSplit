@@ -91,6 +91,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4105B9F11F1FC89E00D6AE99 /* ChatVc */ = {
+			isa = PBXGroup;
+			children = (
+				4140DE951F19E35000692B86 /* ChatVc.swift */,
+				410FBE191F1B474D003C9EED /* ChatCell.swift */,
+			);
+			name = ChatVc;
+			sourceTree = "<group>";
+		};
+		4105B9F21F1FC8B000D6AE99 /* LoginVc */ = {
+			isa = PBXGroup;
+			children = (
+				4140DE931F19E32900692B86 /* LoginVc.swift */,
+			);
+			name = LoginVc;
+			sourceTree = "<group>";
+		};
 		4140DE481F19D21500692B86 = {
 			isa = PBXGroup;
 			children = (
@@ -158,9 +175,8 @@
 		4140DE841F19D2CE00692B86 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4140DE931F19E32900692B86 /* LoginVc.swift */,
-				4140DE951F19E35000692B86 /* ChatVc.swift */,
-				410FBE191F1B474D003C9EED /* ChatCell.swift */,
+				4105B9F21F1FC8B000D6AE99 /* LoginVc */,
+				4105B9F11F1FC89E00D6AE99 /* ChatVc */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
