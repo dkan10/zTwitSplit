@@ -26,6 +26,7 @@ struct MultiLanguage {
     static let btnStartChat = NSLocalizedString("btnStartChat", comment: "")
     static let sendMessagePlaceHolder = NSLocalizedString("sendMessagePlaceHolder", comment: "")
     static let sendMessageEmptyContent = NSLocalizedString("sendMessageEmptyContent", comment: "")
+    static let sendMessageMustContainSpace = NSLocalizedString("sendMessageMustContainSpace", comment: "")
     static let dismiss = NSLocalizedString("dismiss", comment: "")
 }
 

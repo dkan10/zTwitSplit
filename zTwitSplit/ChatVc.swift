@@ -54,13 +54,13 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     @IBAction func sendBtnTapped(_ sender: AnyObject) {
         btnSend.isEnabled = false
         self.view.endEditing(true)
-        
-        let message = tvCurrentMessage.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        if message == MultiLanguage.sendMessagePlaceHolder  || message == "" || !message.contains(" ") {
-            let actionSheetController = UIAlertController(title: "", message: MultiLanguage.sendMessageEmptyContent, preferredStyle: .alert)
-            let dismiss = UIAlertAction.init(title: MultiLanguage.dismiss, style: .cancel, handler: nil)
-            actionSheetController.addAction(dismiss)
-            self.present(actionSheetController, animated: true, completion: nil)
+        let message = tvCurrentMessage.text.trimmingCharacters(in: .whitespaces)
+        if message == MultiLanguage.sendMessagePlaceHolder  || message == "" {
+            let message = MultiLanguage.sendMessageEmptyContent
+            FuncUtils.shared.showAlert(vc: self, message: message)
+        } else if !message.contains(" ") {
+            let message = MultiLanguage.sendMessageMustContainSpace
+            FuncUtils.shared.showAlert(vc: self, message: message)
         } else {
             // send message here.
             if message.characters.count <= 50 {
@@ -68,11 +68,17 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
                 messages.append(post)
                 self.tbvMessage.reloadData()
             } else {
-                let array = FuncUtils.shared.splitMessage(mess: message)
-                print(array)
+                let messageArr = FuncUtils.shared.splitMessage(message: message)
+                let time = FuncUtils.shared.getCurrentDate()
+                for i in 0..<messageArr.count {
+                    let post = Message(sender: userName!, time: time, content: messageArr[i])
+                    messages.append(post)
+                }
+                self.tbvMessage.reloadData()
             }
             
         }
+        FuncUtils.shared.tableViewScrollToBottom(animated: true, tableView: tbvMessage)
         tvCurrentMessage.text = MultiLanguage.sendMessagePlaceHolder
         tvCurrentMessage.textColor = Color.lightGray
         tvCurrentMessage.setNeedsLayout()
@@ -135,11 +141,11 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue cell
         let cell = tbvMessage.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
-        let post = self.messages[indexPath.row]
+        let message = self.messages[indexPath.row]
         
-        cell.lbSender.text = post.sender
-        cell.lbTime.text = post.time
-        cell.tvContent.text = post.content
+        cell.lbSender.text = message.sender
+        cell.lbTime.text = message.time
+        cell.tvContent.text = message.content
         return cell
         
     }

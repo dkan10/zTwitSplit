@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zTwitSplit/ChatVc.swift"
-            timestampString = "522144932.243643"
+            timestampString = "522175897.848926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "sendBtnTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
