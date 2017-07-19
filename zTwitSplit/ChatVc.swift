@@ -32,9 +32,9 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
         self.navigationController?.navigationBar.barTintColor = Color.mainColor
         self.navigationController?.navigationBar.tintColor = Color.white
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ChatVc.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ChatVc.keyboardWillChange(_:)), name:NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ChatVc.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVc.keyboardWillShow(_:)), name:.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVc.keyboardWillChange(_:)), name:.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVc.keyboardWillHide(_:)), name:.UIKeyboardWillHide, object: nil)
         
         tbvMessage.estimatedRowHeight = 80
         tbvMessage.rowHeight = UITableViewAutomaticDimension
@@ -56,16 +56,22 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
         self.view.endEditing(true)
         
         let message = tvCurrentMessage.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        if message == MultiLanguage.sendMessagePlaceHolder  || message == "" {
+        if message == MultiLanguage.sendMessagePlaceHolder  || message == "" || !message.contains(" ") {
             let actionSheetController = UIAlertController(title: "", message: MultiLanguage.sendMessageEmptyContent, preferredStyle: .alert)
             let dismiss = UIAlertAction.init(title: MultiLanguage.dismiss, style: .cancel, handler: nil)
             actionSheetController.addAction(dismiss)
             self.present(actionSheetController, animated: true, completion: nil)
         } else {
             // send message here.
-            let post = Message(sender: userName!, time: FuncUtils.shared.getCurrentDate(), content: message)
-            messages.append(post)
-            self.tbvMessage.reloadData()
+            if message.characters.count <= 50 {
+                let post = Message(sender: userName!, time: FuncUtils.shared.getCurrentDate(), content: message)
+                messages.append(post)
+                self.tbvMessage.reloadData()
+            } else {
+                let array = FuncUtils.shared.splitMessage(mess: message)
+                print(array)
+            }
+            
         }
         tvCurrentMessage.text = MultiLanguage.sendMessagePlaceHolder
         tvCurrentMessage.textColor = Color.lightGray

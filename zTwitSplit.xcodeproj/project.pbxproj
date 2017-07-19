@@ -21,6 +21,7 @@
 		4140DE941F19E32900692B86 /* LoginVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140DE931F19E32900692B86 /* LoginVc.swift */; };
 		4140DE961F19E35000692B86 /* ChatVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140DE951F19E35000692B86 /* ChatVc.swift */; };
 		4140DE981F19EDB900692B86 /* DeviceIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140DE971F19EDB900692B86 /* DeviceIdentifier.swift */; };
+		418397E51F1F4E900002FD5E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418397E41F1F4E900002FD5E /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		4140DE931F19E32900692B86 /* LoginVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVc.swift; sourceTree = "<group>"; };
 		4140DE951F19E35000692B86 /* ChatVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVc.swift; sourceTree = "<group>"; };
 		4140DE971F19EDB900692B86 /* DeviceIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceIdentifier.swift; sourceTree = "<group>"; };
+		418397E41F1F4E900002FD5E /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +119,6 @@
 				4140DE861F19D2DA00692B86 /* Models */,
 				4140DE851F19D2D400692B86 /* Views */,
 				4140DE841F19D2CE00692B86 /* Controllers */,
-				4140DE831F19D2C400692B86 /* Stores */,
 				4140DE821F19D28400692B86 /* Helpers */,
 				4140DE541F19D21500692B86 /* AppDelegate.swift */,
 				4140DE5B1F19D21500692B86 /* Assets.xcassets */,
@@ -152,15 +153,9 @@
 				4140DE871F19D30600692B86 /* Constants.swift */,
 				4140DE971F19EDB900692B86 /* DeviceIdentifier.swift */,
 				410FBE151F1B3E91003C9EED /* FuncUtils.swift */,
+				418397E41F1F4E900002FD5E /* Extension.swift */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		4140DE831F19D2C400692B86 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Stores;
 			sourceTree = "<group>";
 		};
 		4140DE841F19D2CE00692B86 /* Controllers */ = {
@@ -328,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				418397E51F1F4E900002FD5E /* Extension.swift in Sources */,
 				4140DE981F19EDB900692B86 /* DeviceIdentifier.swift in Sources */,
 				410FBE1A1F1B474D003C9EED /* ChatCell.swift in Sources */,
 				4140DE921F19D5C700692B86 /* Message.swift in Sources */,

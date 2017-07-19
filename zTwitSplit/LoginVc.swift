@@ -34,8 +34,8 @@ class LoginVc: UIViewController, UITextFieldDelegate {
         btnStartChat.setTitle(MultiLanguage.btnStartChat, for: .normal)
         
         // addObserver for keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow(notification:)), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidHide(notification:)), name: .UIKeyboardDidHide, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
