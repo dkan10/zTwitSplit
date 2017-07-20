@@ -11,5 +11,5 @@ btnStartChat = "START CHAT";
 pleaseEnterYourName = "Please enter your name!";
 sendMessagePlaceHolder = "Write a message..";
 sendMessageEmptyContent = "Please enter your message before tap send button!";
-sendMessageMustContainSpace = "Message must contain at least a space!";
+sendMessageMustContainSpace = "Existed non-space text with length over 50!";
 dismiss = "Dismiss";

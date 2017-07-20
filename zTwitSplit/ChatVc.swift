@@ -20,10 +20,13 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
     var userName:String?
     
     var messages = [Message]()
+    let testMessage = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32."
+    
+    let testMessage2 = "I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself."
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tvCurrentMessage.text = MultiLanguage.sendMessagePlaceHolder
         tvCurrentMessage.textColor = Color.lightGray
         tvCurrentMessage.delegate = self
@@ -42,34 +45,40 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
         btnSend.isEnabled = false
         hViewHeight = hViewNewMessageContainer.constant
     }
-
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.tvCurrentMessage.isScrollEnabled = false
     }
-
+    
     
     // MARK: IBAction
     @IBAction func btnSend(_ sender: AnyObject) {
         btnSend.isEnabled = false
         self.view.endEditing(true)
-        let message = tvCurrentMessage.text.trimmingCharacters(in: .whitespaces)
+        let message = tvCurrentMessage.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if message == MultiLanguage.sendMessagePlaceHolder  || message == "" {
             let message = MultiLanguage.sendMessageEmptyContent
             FuncUtils.shared.showAlert(vc: self, message: message)
-        } else if !message.contains(" ") {
-            let message = MultiLanguage.sendMessageMustContainSpace
-            FuncUtils.shared.showAlert(vc: self, message: message)
-        } else {
-            // send message here.
+        } else { // send message here.
+            // message is less than or equal to 50 characters, post it as is.
             if message.characters.count <= 50 {
                 let post = Message(sender: userName!, time: FuncUtils.shared.getCurrentDate(), content: message)
                 messages.append(post)
                 self.tbvMessage.reloadData()
             } else {
+                // if there is any word which length is over 50, return error
+                let messageArrSpitBySpace = message.components(separatedBy: " ")
+                for message in messageArrSpitBySpace {
+                    if ((message as NSString).length > 50) {
+                        let message = MultiLanguage.sendMessageMustContainSpace
+                        FuncUtils.shared.showAlert(vc: self, message: message)
+                        return
+                    }
+                }
                 // split message before update in UI.
-                let messageArr = FuncUtils.shared.splitMessage(message: message)
+                let messageArr = FuncUtils.shared.splitMessage(message: message as NSString)
                 let time = FuncUtils.shared.getCurrentDate()
                 for i in 0..<messageArr.count {
                     let post = Message(sender: userName!, time: time, content: messageArr[i])
@@ -79,6 +88,7 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
             }
             
         }
+        
         FuncUtils.shared.tableViewScrollToBottom(animated: true, tableView: tbvMessage)
         tvCurrentMessage.text = MultiLanguage.sendMessagePlaceHolder
         tvCurrentMessage.textColor = Color.lightGray
@@ -177,5 +187,5 @@ class ChatVc: UIViewController, UITableViewDataSource, UITableViewDelegate, UITe
             self.view.frame.origin.y += keyboardSize.height
         }
     }
-
+    
 }
