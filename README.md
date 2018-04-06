@@ -4,7 +4,7 @@
  This is the answer for Zalora Viet Nam recruitment challenge
  ```
 
-## Assgignment
+## Assignment
 `Description`
 
 The product Tweeter (or zTwitSplit) allows users to post short messages limited to 50 characters each.
